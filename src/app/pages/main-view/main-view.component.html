@@ -1,0 +1,50 @@
+<!-- main-view-component.html = la vue du projet -->
+
+<div class="root">
+  <div class="navbar has background-dark">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <h1 class="app-name has-gradient-text">Kanban in Angular</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="board">
+    <div class="board-bar">
+      <p class="board-name">Board Name</p>
+    </div>
+
+
+    <div class="board-wrapper">
+
+      <div class="board-columns" cdkDropListGroup>
+
+        <div class="board-column" *ngFor="let column of board.columns">
+          <!-- pour chaque colonne du tableau instancié dans le component.ts -->
+          <div class="column-title">
+            {{ column.name }}
+            <!-- renvoie au nom de la colonne -->
+          </div>
+
+          <div class="tasks-container"
+          cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="column.tasks"
+            (cdkDropListDropped)="drop($event)">
+          <!--
+            column.tasks = fait référence aux tâches référencées pour chaque colonne
+           -->
+            <div class="task" *ngFor="let item of column.tasks" cdkDrag>
+              <!-- import de la directive Drag & Grop, qui permet à la bannière d'être déplacée -->
+              {{ item }}
+              <!-- fait appel aux tâches contenues dans le component.ts -->
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

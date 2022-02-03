@@ -1,0 +1,121 @@
+//main-view-component.scss = le design en css
+
+.root{
+  // On utilise FLEXBOX pour la div principale
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-name{
+  // Pour le titre du document
+  font-size: 28px;
+  font-family: "Troochi", sans-serif;
+  font-weight: bold;
+}
+
+.has-gradient-text{
+  // Pour ce qui contient le texte
+  background: -webkit-linear-gradient(#1b0aff, #e9e62a);
+  -webkit-background-clip: text; // la bordure s'étend au texte
+  -webkit-text-fill-color: transparent;
+}
+
+.board{
+  // Pour le tableau, on utilise de nouveau FLEXBOX
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; // l'élément partage l'espace avec les autres éléments
+  min-width: 0;
+  min-height: 0;
+
+
+  .board-bar{
+    // Pour la deuxième bannière horizontale
+    background: rgba(77, 226, 14, 0.788);
+    padding: 8px 15px;
+  }
+
+  .board-name{
+    font-size: 20px;
+    font-style: bold;
+    color: white;
+  }
+}
+
+.board-wrapper{
+  display: flex;
+  flex-grow: 1; // l'élément partage l'espace avec les autres éléments
+  overflow-x: auto;
+
+  .board-columns{
+    // Pour les différentes colonnes
+    display: flex;
+    flex-grow: 1;
+
+    .board-column{
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      flex-basis: 0; // détermine la taille de la boîte de contenu
+
+      min-width: 300px;
+      margin: 50px; //marge EXTÉRIEURE
+      padding: 25px; // marge INTÉRIEURE
+
+      background: rgb(white, 0.5); // fond blanc avec une transparence
+
+      &:not(:first-child){
+        margin-left: 0;
+      }
+
+      .column-title{
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: black;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+    }
+  }
+}
+
+.tasks-container{
+  // Pour les bandeaux des tâches à effectuer
+  flex-grow: 1;
+
+  .task{
+    display: flex;
+    padding: 15px 20px;
+    background: white;
+    border-bottom: solid 1px #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+}
+
+
+// LES CLASSES POUR LES ÉLÉMENTS CDKDRAG&DROP
+
+.cdk-drag-preview {
+  // Pour le déplacement des items d'une colonne à l'autre
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.5;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.tasks-container.cdk-drop-list-dragging .task-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

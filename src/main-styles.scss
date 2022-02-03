@@ -1,0 +1,23 @@
+// Global styles and changing bulma variables
+
+// Importer une police GoogleFonts
+@import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
+$family-sans-serif: "Troochi", sans-serif;
+
+// Mettre à jour quelques variables Bulma
+$control-border-width : 2px; // taille de la bordure
+$input-border-color: transparent; // couleur de la bordure
+$input-shadow: none; // ombre de l'input
+
+// PLACE AU STYLE //
+
+html, body{
+  height: 100%;
+}
+
+html{
+  // arrière-plan
+  background-image:  url('./assets/newBackground.svg');
+  background-size: cover;
+  overflow-y: auto !important;
+}
